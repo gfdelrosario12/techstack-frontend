@@ -5,8 +5,8 @@ import type { Certification } from "../data/types"
 
 export function useCertifications() {
   // ✅ Only use env var, no dynamic fallback
-  const API_BASE = process.env.NEXT_PUBLIC_API_BASE
-
+  const API_BASE = process.env.NEXT_PUBLIC_API_URL
+  console.log("API_BASE env:", process.env.NEXT_PUBLIC_API_URL)
   const [certifications, setCertifications] = useState<Certification[]>([])
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState("")
