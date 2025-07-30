@@ -4,6 +4,9 @@ import { useState } from "react"
 import type { Certification } from "../data/types"
 
 export function useCertifications() {
+  // ✅ Only use env var, no dynamic fallback
+  const API_BASE = process.env.NEXT_PUBLIC_API_BASE
+
   const [certifications, setCertifications] = useState<Certification[]>([])
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState("")
@@ -22,25 +25,20 @@ export function useCertifications() {
       const params = new URLSearchParams()
       params.append("domain", domain)
       if (search) params.append("search", search)
-      params.append("level", level)
+      if (level) params.append("level", level)
       types.forEach((t) => params.append("types", t))
       platforms.forEach((p) => params.append("platforms", p))
 
-      const response = await fetch(`http://127.0.0.1:8000/certifications?${params.toString()}`)
+      const response = await fetch(`${API_BASE}/certifications?${params.toString()}`)
 
       if (!response.ok) {
-        throw new Error(`Failed to fetch opportunities: ${response.status}`)
+        throw new Error(`Failed to fetch certifications: ${response.status}`)
       }
 
       const data = await response.json()
-
-      if (data.results) {
-        setCertifications(data.results)
-      } else {
-        setCertifications([])
-      }
+      setCertifications(data.results || [])
     } catch (err: any) {
-      setError(err.message)
+      setError(err.message || "An unexpected error occurred")
       setCertifications([])
     } finally {
       setLoading(false)
