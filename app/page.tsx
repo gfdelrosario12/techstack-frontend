@@ -90,6 +90,16 @@ export default function TechStack() {
             <Sparkles className="w-10 h-10 text-yellow-300 animate-pulse" />
           </motion.div>
 
+          {/* 🔹 Added Quote */}
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.1 }}
+            className="text-2xl italic text-yellow-300 mb-6"
+          >
+            "Stack the Opportunities"
+          </motion.p>
+
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
