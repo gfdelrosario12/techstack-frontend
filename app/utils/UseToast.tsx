@@ -14,7 +14,6 @@ type ToastOptions = Omit<ToasterToast, "id">
 export function toast({ title, description, ...props }: ToastOptions) {
   const id = Date.now().toString()
 
-  // Combine title and description into Sonner's message + description
   sonnerToast(title || "", {
     description: description || "",
     ...props,
@@ -31,7 +30,6 @@ export function useToast() {
   // For compatibility with your old reducer-based hook
   const [toasts, setToasts] = React.useState<ToasterToast[]>([])
 
-  // Since Sonner manages state internally, we can just return the wrapper
   return {
     toasts,
     toast,

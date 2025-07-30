@@ -56,7 +56,6 @@ export default function FiltersCard({
         </CardTitle>
       </CardHeader>
       <CardContent className="space-y-6">
-        {/* Tech Domains */}
         <div className="space-y-3">
           <Label className="text-sm font-semibold text-gray-700 flex items-center gap-2">
             <Sparkles className="w-4 h-4 text-purple-500" />
@@ -80,7 +79,6 @@ export default function FiltersCard({
           </RadioGroup>
         </div>
 
-        {/* Level */}
         <div className="space-y-3">
           <Label className="text-sm font-semibold text-gray-700">Experience Level</Label>
           <RadioGroup value={tempLevel} onValueChange={onLevelChange}>
@@ -100,7 +98,6 @@ export default function FiltersCard({
           </RadioGroup>
         </div>
 
-        {/* Opportunity Types */}
         <div className="space-y-3">
           <Label className="text-sm font-semibold text-gray-700">Opportunity Types</Label>
           <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
@@ -123,7 +120,6 @@ export default function FiltersCard({
           </div>
         </div>
 
-        {/* Platforms */}
         <div className="space-y-3">
           <Label className="text-sm font-semibold text-gray-700">Platforms</Label>
           <div className="flex flex-wrap gap-2">
@@ -144,7 +140,6 @@ export default function FiltersCard({
           </div>
         </div>
 
-        {/* Apply Button */}
         <div className="pt-4 border-t">
           <Button
             onClick={onApply}

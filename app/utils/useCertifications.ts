@@ -30,8 +30,8 @@ export function useCertifications() {
         domain: domain.toLowerCase(),
         search: search || "",
         level,
-        types: types.join(","), // ✅ Convert string[] → string
-        platforms: platforms.join(","), // ✅ Convert string[] → string
+        types: types.join(","),
+        platforms: platforms.join(","),
       })
 
       const res = await fetch(`${API_BASE}/certifications?${params.toString()}`)

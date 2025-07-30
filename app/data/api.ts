@@ -26,7 +26,6 @@ export async function fetchCertificationsAPI(
 
   if (!data.results) return []
 
-  // ✅ Remove all `any` by using Certification
   const unique = Object.values(
     data.results.reduce<Record<string, Certification>>((acc, cert) => {
       if (!acc[cert.url]) acc[cert.url] = cert

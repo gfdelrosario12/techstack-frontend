@@ -40,7 +40,6 @@ export default function OpportunityCard({ opp, isExpanded, onToggleExpand }: Opp
         }`}
       >
         <CardContent className="p-0">
-          {/* Header with gradient */}
           <div className="bg-gradient-to-r from-purple-500 to-indigo-600 p-4 text-white">
             <div className="flex items-start justify-between gap-3">
               <div className="flex-1">
@@ -66,9 +65,7 @@ export default function OpportunityCard({ opp, isExpanded, onToggleExpand }: Opp
             </div>
           </div>
 
-          {/* Content */}
           <div className="p-4 space-y-4">
-            {/* Badges */}
             <div className="flex flex-wrap gap-2">
               {opp.category_label && (
                 <Badge
@@ -91,10 +88,8 @@ export default function OpportunityCard({ opp, isExpanded, onToggleExpand }: Opp
               )}
             </div>
 
-            {/* Summary */}
             {opp.summary && <p className="text-gray-600 text-sm leading-relaxed line-clamp-2">{opp.summary}</p>}
 
-            {/* Expand/Collapse Button */}
             <Button
               variant="ghost"
               onClick={onToggleExpand}
@@ -106,7 +101,6 @@ export default function OpportunityCard({ opp, isExpanded, onToggleExpand }: Opp
               </motion.div>
             </Button>
 
-            {/* Animated Details */}
             <AnimatePresence>
               {isExpanded && (
                 <motion.div

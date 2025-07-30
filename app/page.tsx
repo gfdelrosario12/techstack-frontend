@@ -23,13 +23,9 @@ export default function TechStack() {
   const [selectedCertTypes, setSelectedCertTypes] = useState<string[]>(["Certifications"])
   const [selectedPlatforms, setSelectedPlatforms] = useState<string[]>(["LinkedIn", "Facebook"])
   const [expanded, setExpanded] = useState<string | null>(null)
-
-  // 🔹 Scroll hint state
   const [showScrollHint, setShowScrollHint] = useState(false)
-
   const { certifications: opportunities, loading, error, fetchCertifications } = useCertifications()
 
-  // === Filter Handlers ===
   const handleDomainChange = (category: string, checked: boolean) => {
     if (checked) setTempDomain(category)
   }
@@ -49,11 +45,9 @@ export default function TechStack() {
     setLevel(newLevel)
     fetchCertifications(newDomain, "", newLevel, selectedCertTypes, selectedPlatforms)
 
-    // 🔹 Show arrow popup
     setShowScrollHint(true)
   }
 
-  // 🔹 Auto-hide arrow after 5 seconds
   useEffect(() => {
     if (showScrollHint) {
       const timer = setTimeout(() => setShowScrollHint(false), 5000)
@@ -61,7 +55,6 @@ export default function TechStack() {
     }
   }, [showScrollHint])
 
-  // 🔹 Hide arrow on scroll
   useEffect(() => {
     const handleScroll = () => setShowScrollHint(false)
     window.addEventListener("scroll", handleScroll)
@@ -70,13 +63,10 @@ export default function TechStack() {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-indigo-50 via-white to-purple-50">
-      {/* Header */}
       <header className="relative overflow-hidden bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-600">
         <div className="absolute inset-0 bg-black/10"></div>
         <div className="absolute inset-0 bg-[url('/placeholder.svg?height=400&width=800')] opacity-10"></div>
-
         <div className="relative container mx-auto px-4 py-20 text-center">
-          {/* Title */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -90,7 +80,6 @@ export default function TechStack() {
             <Sparkles className="w-10 h-10 text-yellow-300 animate-pulse" />
           </motion.div>
 
-          {/* 🔹 Added Quote */}
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -109,7 +98,6 @@ export default function TechStack() {
             Discover certifications, vouchers, courses, events, and more to accelerate your tech career journey
           </motion.p>
 
-          {/* Filters */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -135,7 +123,6 @@ export default function TechStack() {
         </div>
       </header>
 
-      {/* 🔹 Arrow Popup */}
       <AnimatePresence>
         {showScrollHint && (
           <motion.div
@@ -164,7 +151,6 @@ export default function TechStack() {
         )}
       </AnimatePresence>
 
-      {/* Results */}
       <main id="results-section" className="container mx-auto px-4 py-12">
         <div className="text-center mb-12">
           <div className="flex items-center justify-center gap-3 mb-4">
@@ -199,7 +185,6 @@ export default function TechStack() {
           )}
         </div>
 
-        {/* Results Grid */}
         {loading ? (
           <LoadingState />
         ) : !loading && Array.isArray(opportunities) && opportunities.length > 0 ? (
@@ -210,7 +195,6 @@ export default function TechStack() {
             className="grid gap-6 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3"
           >
             {opportunities.map((opp: Certification, index) => {
-              // ✅ Create unique key from URL or fallback to title-index
               const uniqueKey = opp.url || `${opp.title}-${index}`
 
               return (
